@@ -1,0 +1,6 @@
+POST http://localhost:8081/trip/preview
+Content-Type: application/json
+
+{
+    "userID": "user123"
+}
