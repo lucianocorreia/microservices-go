@@ -26,21 +26,12 @@ func (h *HttpHandler) HandleTripPreview(w http.ResponseWriter, r *http.Request) 
 		return
 	}
 
-	fare := &domain.RideFareModel{
-		UserID: "42",
-	}
-
 	ctx := r.Context()
 
-	fmt.Println("Received request to create trip for user:", fare.UserID)
-	t, err := h.Service.CreateTrip(ctx, fare)
+	t, err := h.Service.GetRoute(ctx, &reqBody.Pickup, &reqBody.Destination, true)
 	if err != nil {
 		log.Println(err)
 	}
-
-	// log the details of the trip
-	log.Printf("Trip created: ID=%s, UserID=%s, Status=%s, Fare=%v\n",
-		t.ID.Hex(), t.UserID, t.Status, t.RideFare)
 
 	writeJson(w, http.StatusOK, t)
 }

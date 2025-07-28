@@ -2,5 +2,13 @@ POST http://localhost:8081/trip/preview
 Content-Type: application/json
 
 {
-    "userID": "user123"
+    "userID": "user123",
+    "pickup": {
+        "latitude": 52.517037,
+        "longitude": 13.388860
+    },
+    "destination": {
+        "latitude": 52.529407,
+        "longitude": 13.397634
+    }
 }
